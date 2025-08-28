@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Omaforge
+Description=Omaforge splash screen.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/omaforge
+ScriptFile=/usr/share/plymouth/themes/omaforge/omaforge.script
+ConsoleLogBackgroundColor=0x1a1b26

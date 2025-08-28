@@ -1,0 +1,82 @@
+/* Colors are defined by theme file and can be referenced via @base, @text, @selected-text, and @border */
+
+* {
+  font-family: "CaskaydiaMono Nerd Font", monospace;
+  font-size: 18px;
+}
+
+window {
+  margin: 0px;
+  padding: 0px;
+  background-color: @base-rgba;
+  opacity: 0.95;
+}
+
+window:focus {
+  background-color: transparent;
+}
+
+#inner-box {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: @base;
+}
+
+#outer-box {
+  padding: 20px;
+  background-color: @base;
+  border: 3px solid @border;
+  border-radius: 14px;
+  margin: -2px;
+}
+
+window:focus > #outer-box {
+  border: 3px solid transparent;
+}
+
+#scroll {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: @base;
+}
+
+#input {
+  margin: 0;
+  padding: 10px;
+  border: none;
+  background-color: @base;
+  color: @text;
+}
+
+#input:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+#text {
+  margin: 5px;
+  border: none;
+  color: @text;
+}
+
+#entry {
+  background-color: @base;
+}
+
+#entry:selected {
+  outline: none;
+  border: none;
+}
+
+#entry:selected #text {
+  color: @selected-text;
+}
+
+#entry image {
+  -gtk-icon-transform: scale(0.7);
+}
+
+@import ".config/omaforge/current/theme/wofi.css";

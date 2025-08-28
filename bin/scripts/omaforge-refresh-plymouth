@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$1" == "-y" ]] || gum confirm "Refresh Plymouth theme? This will replace your current startup screen with Omaforge defaults."; then
+  sudo cp ~/.local/share/omaforge/default/plymouth/* /usr/share/plymouth/themes/omaforge/
+  # Install the theme as an alternative
+  sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/omaforge/omaforge.plymouth 100
+  # Set it as the default
+  sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/omaforge/omaforge.plymouth
+fi

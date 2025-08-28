@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Show logo
+clear
+cat ~/.local/share/omaforge/logo.txt
+
+# Get the latest while trying to preserve any modifications
+omaforge_path=~/.local/share/omaforge
+git -C $omaforge_path pull --autostash
+git -C $omaforge_path diff --check || git -C $omaforge_path reset --merge
+
+# Run migrations
+"$HOME/.local/share/omaforge/bin/scripts/omaforge-migrate"

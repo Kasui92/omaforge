@@ -1,0 +1,9 @@
+#!/bin/bash
+
+OMAFORGE_PATH="$HOME/.local/share/omaforge"
+OMAFORGE_VERSION=$(git -C "$OMAFORGE_PATH" describe --tags $(git -C "$OMAFORGE_PATH" rev-list --tags --max-count=1))
+OMAFORGE_BRANCH=$(cd "$OMAFORGE_PATH" && git branch --show-current | grep -q "dev" && echo -e "\033[0;33m(dev)" || echo "")
+
+echo -e "$OMAFORGE_VERSION $OMAFORGE_BRANCH"
+
+exit 0

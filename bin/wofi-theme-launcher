@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if pgrep -x wofi > /dev/null; then
+  pkill wofi
+fi
+
+"$HOME/.local/share/omaforge/bin/scripts/omaforge-theme-wofi-menu"

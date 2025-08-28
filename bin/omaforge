@@ -1,0 +1,248 @@
+#!/bin/bash
+
+OMAFORGE_PATH="$HOME/.local/share/omaforge"
+
+help() {
+  echo -e "\n\e[1;36m$(cat ~/.local/share/omaforge/logo.txt)\e[0m"
+  echo
+  echo "USAGE:"
+  echo "    omaforge [COMMAND] [OPTIONS]"
+  echo
+  echo "COMMANDS:"
+  echo "    update         Update Omaforge to the latest version"
+  echo "    theme          Change and manage system themes"
+  echo "    apps           Install, uninstall and manage applications"
+  echo "    refresh        Refresh specific components of Omaforge"
+  echo "    restart        Restart specific components of Omaforge"
+  echo "    version, -v    Show the current version of Omaforge"
+  echo "    help, -h       Show this help message"
+  echo
+  echo "For more information about a specific command, run:"
+  echo "    omaforge [COMMAND] --help"
+  echo
+}
+
+update() {
+  # Show help if --help is provided
+  if [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge update [OPTIONS]"
+    echo
+    echo "OPTIONS:"
+    echo "    --system       Update the entire system"
+    echo "    --firmware     Update the system firmware"
+    echo "    --help         Show this help message"
+    echo
+    echo "If no option is provided, it will update Omaforge only."
+    echo
+    exit 0
+  fi
+
+  # Perform system update if --system is provided
+  if [ "$1" == "--system" ]; then
+    echo -e "\e[32m\nUpdating the entire system...\e[0m"
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-update-system"
+    exit 0
+  fi
+
+  # Perform firmware update if --firmware is provided
+  if [ "$1" == "--firmware" ]; then
+    echo -e "\e[32m\nUpdating firmware...\e[0m"
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-update-firmware"
+    exit 0
+  fi
+
+  # Default update action for Omaforge
+  echo -e "\e[32m\nUpdating Omaforge...\e[0m"
+  source "$OMAFORGE_PATH/bin/scripts/omaforge-update"
+  exit 0
+}
+
+theme() {
+  if [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge theme [OPTIONS] [THEME_NAME]"
+    echo
+    echo "OPTIONS:"
+    echo "    --current      Show the current theme"
+    echo "    --help         Show this help message"
+    echo
+    echo "If no theme name is provided, it will display the theme menu."
+    echo
+    exit 0
+  fi
+
+  if [ "$1" == "--current" ]; then
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-theme-current"
+    exit 0
+  fi
+
+  if [ -n "$1" ]; then
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-theme-set" "$1"
+    exit 0
+  fi
+
+  source "$OMAFORGE_PATH/bin/scripts/omaforge-theme-menu"
+  exit 1
+}
+
+apps() {
+  # Show help if --help is provided or no arguments are given
+  if [ -z "$1" ] || [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge apps [install|uninstall] [APP_NAME]"
+    echo "OPTIONS:"
+    echo "    install        Install an application"
+    echo "    uninstall      Uninstall an application"
+    echo "    --help         Show this help message"
+    echo
+    echo "If no APP_NAME is provided, it will display the application menu."
+    echo
+    exit 0
+  fi
+
+  # If install is specified, check if an argument is provided; otherwise, show the menu
+  if [ "$1" == "install" ]; then
+    if [ -z "$2" ]; then
+      source "$OMAFORGE_PATH/bin/scripts/omaforge-apps-install-menu"
+      exit 0
+    fi
+
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-apps-install" "$2"
+    exit 0
+  fi
+
+  # If uninstall is specified, check if an argument is provided; otherwise, show the uninstall menu
+  if [ "$1" == "uninstall" ]; then
+    if [ -z "$2" ]; then
+      source "$OMAFORGE_PATH/bin/scripts/omaforge-apps-uninstall-menu"
+      exit 0
+    fi
+
+    source "$OMAFORGE_PATH/bin/scripts/omaforge-apps-uninstall" "$2"
+    exit 0
+  fi
+
+  # If no valid command is provided, show the help message
+  echo -e "\e[31mInvalid command: $1\e[0m"
+  echo "Use 'omaforge apps --help' for usage information."
+  exit 1
+}
+
+webapp() {
+  if [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge webapp [COMMAND]"
+    echo "COMMAND:"
+    echo "    install        Install a web application"
+    echo "    remove         Remove a web application"
+    echo "    launch         Launch a web application"
+    echo "    --help         Show this help message"
+    echo
+    echo "This command is used to manage web applications."
+    echo
+    exit 0
+  fi
+
+  # Check if a specific command is provided and source the corresponding script
+  if [ -n "$1" ]; then
+    script_path="$OMAFORGE_PATH/bin/scripts/omaforge-webapp-$1"
+    if [ -f "$script_path" ]; then
+      source "$script_path" "${@:2}"
+      exit 0
+    fi
+  fi
+
+  # If no valid command is provided, show the help message
+  echo -e "\e[31mInvalid command: $1\e[0m"
+  echo "Use 'omaforge webapp --help' for usage information."
+  exit 1
+}
+
+refresh() {
+  # Show help if --help is provided
+  if [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge refresh [COMMAND]"
+    echo "COMMAND:"
+    echo "    applications   Refresh application .desktop files"
+    echo "    config         Refresh configuration files"
+    echo "    gdm            Refresh GDM background (use default)"
+    echo "    plymouth       Refresh Plymouth theme"
+    echo "    --help         Show this help message"
+    echo
+    echo "This command is used to refresh specific components of Omaforge."
+    echo
+    exit 0
+  fi
+
+  # Check if a specific command is provided and source the corresponding script
+  if [ -n "$1" ]; then
+    script_path="$OMAFORGE_PATH/bin/scripts/omaforge-refresh-$1"
+    if [ -f "$script_path" ]; then
+      source "$script_path" "${@:2}"
+      exit 0
+    fi
+  fi
+
+  # If no valid command is provided, show the help message
+  echo -e "\e[31mInvalid command: $1\e[0m"
+  echo "Use 'omaforge refresh --help' for usage information."
+  exit 1
+}
+
+restart() {
+  # Show help if --help is provided
+  if [ "$1" == "--help" ]; then
+    echo "USAGE:"
+    echo "    omaforge restart [COMMAND]"
+    echo "COMMAND:"
+    echo "    xcompose       Restart XCompose"
+    echo "    --help         Show this help message"
+    echo
+    echo "This command is used to restart specific components of Omaforge."
+    echo
+    exit 0
+  fi
+
+  # Check if a specific command is provided and source the corresponding script
+  if [ -n "$1" ]; then
+    script_path="$OMAFORGE_PATH/bin/scripts/omaforge-restart-$1"
+    if [ -f "$script_path" ]; then
+      source "$script_path"
+      exit 0
+    fi
+  fi
+
+  # If no valid command is provided, show the help message
+  echo -e "\e[31mInvalid command: $1\e[0m"
+  echo "Use 'omaforge restart --help' for usage information."
+  exit 1
+}
+
+version() {
+  source "$OMAFORGE_PATH/bin/scripts/omaforge-version"
+  exit 0
+}
+
+# Check the command and call the appropriate function
+case $1 in
+  update)
+    update "${@:2}" ;;
+  theme)
+    theme "${@:2}" ;;
+  apps)
+    apps "${@:2}" ;;
+  webapp)
+    webapp "${@:2}" ;;
+  refresh)
+    refresh "${@:2}" ;;
+  restart)
+    restart "${@:2}" ;;
+  version|-v|--version)
+    version ;;
+  help|-h|--help)
+    help ;;
+  *)
+    help ;;
+esac

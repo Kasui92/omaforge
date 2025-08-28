@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Omaforge
+Comment=Omaforge Controls
+Exec=alacritty --class=Omaforge --title=Omaforge -e omaforge-menu
+Terminal=false
+Type=Application
+Icon=Omaforge
+Categories=GTK;
+StartupNotify=false

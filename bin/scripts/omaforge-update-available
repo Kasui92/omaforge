@@ -1,0 +1,11 @@
+#!/bin/bash
+
+OMAFORGE_PATH="$HOME/.local/share/omaforge"
+latest_tag=$(git -C $OMAFORGE_PATH ls-remote --tags origin | grep -v "{}" | awk '{print $2}' | sed 's#refs/tags/##' | sort -V | tail -n 1)
+current_tag=$(git -C $OMAFORGE_PATH describe --tags $(git -C $OMAFORGE_PATH rev-list --tags --max-count=1))
+
+if [[ "$current_tag" != "$latest_tag" ]]; then
+  echo -e "\nA new version of Omaforge is available!\n"
+fi
+
+exit 0

@@ -1,0 +1,7 @@
+source ~/.local/share/omaforge/default/bash/shell
+source ~/.local/share/omaforge/default/bash/aliases
+source ~/.local/share/omaforge/default/bash/functions
+source ~/.local/share/omaforge/default/bash/prompt
+source ~/.local/share/omaforge/default/bash/init
+source ~/.local/share/omaforge/default/bash/envs
+[[ $- == *i* ]] && bind -f ~/.local/share/omaforge/default/bash/inputrc

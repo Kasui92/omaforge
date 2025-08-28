@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <webapp-url>"
+  exit 1
+fi
+
+browser=$(xdg-settings get default-web-browser)
+
+case $browser in
+google-chrome* | brave-browser* | microsoft-edge* | opera* | vivaldi*) ;;
+*) browser="chromium.desktop" ;;
+esac
+
+exec "$browser" --new-window --app="$1" --name="$1" --class="$1"
