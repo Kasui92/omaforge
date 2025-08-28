@@ -1,14 +1,20 @@
 <p align="center">
-  <img src="https://omakasui.org/assets/images/omaforge-logo.png" alt="Omaforge Logo" height="200" width="200" />
+  <img src="https://omakasui.org/assets/images/omaforge-logo.png" alt="Omaforge Logo" height="300" width="300" />
 </p>
 
 <h1 align="center">Omaforge</h1>
 
 Omaforge can be considered a personalized derivative of [Omakub](https://omakub.org), the one-liner tool that turns a fresh Ubuntu install into a modern development environment. It takes Omakub a step further, transforming GNOME with [Forge](https://github.com/forge-ext/forge) into a tiling-like, streamlined workspace — minimal, opinionated, and developer-focused, inspired by [Omarchy](https://omarchy.org).
 
+This is an **experiment**, a concept to demonstrate that it is possible to deeply customize GNOME.
+
 [Omaforge](https://github.com/user-attachments/assets/d3eaf4d6-bb14-4553-8250-29bd90c3d8cc)
 
 ## Installation
+
+> [!NOTE]
+>
+> Forge is currently seeking maintainers, so this project, while well-maintained, may have several issues and not be supported for future Ubuntu LTS releases. Due to this situation and maintenance difficulties, **production use is not recommended**.
 
 Omaforge is designed to transform a fresh **Ubuntu Server LTS** installation into a complete development environment. Make sure you have:
 
