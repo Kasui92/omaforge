@@ -12,9 +12,9 @@ This is an **experiment**, a concept to demonstrate that it is possible to deepl
 
 ## Installation
 
-> [!NOTE]
+> [!WARNING]
 >
-> [Forge is currently seeking maintainers](https://github.com/forge-ext/forge?tab=readme-ov-file#forge-needs-a-new-maintainer), so this project, while well-maintained, may have several issues and not be supported for future Ubuntu LTS releases. Due to this situation and maintenance difficulties, **production use is not recommended**.
+> [Forge is currently seeking maintainers](https://github.com/forge-ext/forge?tab=readme-ov-file#forge-needs-a-new-maintainer), so this project, while well-maintained, may have several issues and not be supported for future Ubuntu LTS releases. Due to this situation and maintenance difficulties, **production or daily basis use are not recommended**.
 
 Omaforge is designed to transform a fresh **Ubuntu Server LTS** installation into a complete development environment. Make sure you have:
 
