@@ -4,6 +4,12 @@
 
 <h1 align="center">Omaforge</h1>
 
+> [!WARNING]
+>
+> [Forge is currently seeking maintainers](https://github.com/forge-ext/forge?tab=readme-ov-file#forge-needs-a-new-maintainer), so this project, while well-maintained, may have several issues and might not be supported in future Ubuntu LTS releases. Due to this situation and the resulting maintenance difficulties, **production or daily use is not recommended**.
+>
+>For the same reason, **this repository has been archived**, and no further commits are planned until the situation with the extension becomes clearer. Should the project become active again or the issues resolved, reopening and resuming work will be reconsidered.
+
 Omaforge can be considered a personalized derivative of [Omakub](https://omakub.org), the one-liner tool that turns a fresh Ubuntu install into a modern development environment. It takes Omakub a step further, transforming GNOME with [Forge](https://github.com/forge-ext/forge) into a tiling-like, streamlined workspace — minimal, opinionated, and developer-focused, inspired by [Omarchy](https://omarchy.org).
 
 This is an **experiment**, a concept to demonstrate that it is possible to deeply customize GNOME.
@@ -11,10 +17,6 @@ This is an **experiment**, a concept to demonstrate that it is possible to deepl
 [Omaforge](https://github.com/user-attachments/assets/d3eaf4d6-bb14-4553-8250-29bd90c3d8cc)
 
 ## Installation
-
-> [!WARNING]
->
-> [Forge is currently seeking maintainers](https://github.com/forge-ext/forge?tab=readme-ov-file#forge-needs-a-new-maintainer), so this project, while well-maintained, may have several issues and not be supported for future Ubuntu LTS releases. Due to this situation and maintenance difficulties, **production or daily basis use are not recommended**.
 
 Omaforge is designed to transform a fresh **Ubuntu Server LTS** installation into a complete development environment. Make sure you have:
 
