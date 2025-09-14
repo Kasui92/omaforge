@@ -10,7 +10,7 @@
 >
 >For the same reason, **this repository has been archived**, and no further commits are planned until the situation with the extension becomes clearer. Should the project become active again or the issues resolved, reopening and resuming work will be reconsidered.
 
-Omaforge can be considered a personalized derivative of [Omakub](https://omakub.org), the one-liner tool that turns a fresh Ubuntu install into a modern development environment. It takes Omakub a step further, transforming GNOME with [Forge](https://github.com/forge-ext/forge) into a tiling-like, streamlined workspace — minimal, opinionated, and developer-focused, inspired by [Omarchy](https://omarchy.org).
+Omaforge can be considered a personalized derivative of [Omakub](https://omakub.org), the one-liner tool that turns a fresh Ubuntu install into a modern development environment. It takes Omakub a step further, transforming GNOME with [Forge](https://github.com/forge-ext/forge) into a tiling-like, streamlined workspace, inspired by [Omarchy](https://omarchy.org).
 
 This is an **experiment**, a concept to demonstrate that it is possible to deeply customize GNOME.
 
@@ -29,8 +29,6 @@ To install Omaforge, simply run the following command in your terminal:
 ```bash
 curl -fsSL https://omakasui.org/omaforge | bash
 ```
-
-You can also install Omaforge in its "development" version to experiment and/or contribute, but you accept all the risks involved (and a few coffees won't always be enough). This is the command, for the brave:
 
 ## Documentation
 
